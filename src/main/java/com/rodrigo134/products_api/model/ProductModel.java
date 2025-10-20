@@ -34,7 +34,7 @@ public class ProductModel {
     public BigDecimal getProductPrice() {
         return productPrice;
     }
-    public long getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
