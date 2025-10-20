@@ -44,7 +44,7 @@ class ProductControllerTest {
     @Test
     void testCreateProduct() throws Exception {
         RequestDto requestDto = new RequestDto("Produto A", "Descrição A", new BigDecimal("10.0"));
-        ProductResponseDto responseDto = new ProductResponseDto("Produto A", "Descrição A", new BigDecimal("10.0"));
+        ProductResponseDto responseDto = new ProductResponseDto(1L,"Produto A", "Descrição A", new BigDecimal("10.0"));
 
         when(productService.createProduct(requestDto)).thenReturn(responseDto);
 
@@ -61,8 +61,8 @@ class ProductControllerTest {
 
     @Test
     void testGetAllProducts() throws Exception {
-        ProductResponseDto productA = new ProductResponseDto("Produto A", "Descrição A", new BigDecimal("10.0"));
-        ProductResponseDto productB = new ProductResponseDto("Produto B", "Descrição B", new BigDecimal("20.0"));
+        ProductResponseDto productA = new ProductResponseDto(1L,"Produto A", "Descrição A", new BigDecimal("10.0"));
+        ProductResponseDto productB = new ProductResponseDto(1L,"Produto B", "Descrição B", new BigDecimal("20.0"));
 
         List<ProductResponseDto> products = Arrays.asList(productA, productB);
 
@@ -82,7 +82,7 @@ class ProductControllerTest {
 
     @Test
     void testGetProductById() throws Exception {
-        ProductResponseDto product = new ProductResponseDto("Produto A", "Descrição A", new BigDecimal("10.0"));
+        ProductResponseDto product = new ProductResponseDto(1L,"Produto A", "Descrição A", new BigDecimal("10.0"));
 
         when(productService.findById(1L)).thenReturn(product);
 
@@ -98,7 +98,7 @@ class ProductControllerTest {
     @Test
     void testUpdateProduct() throws Exception {
         RequestDto requestDto = new RequestDto("Produto A Atualizado", "Descrição Atualizada", new BigDecimal("15.0"));
-        ProductResponseDto responseDto = new ProductResponseDto("Produto A Atualizado", "Descrição Atualizada", new BigDecimal("15.0"));
+        ProductResponseDto responseDto = new ProductResponseDto(1L,"Produto A Atualizado", "Descrição Atualizada", new BigDecimal("15.0"));
 
         when(productService.updateProduct(1L, requestDto)).thenReturn(responseDto);
 

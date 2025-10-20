@@ -3,7 +3,7 @@ package com.rodrigo134.products_api.dto;
 import java.math.BigDecimal;
 
 public class ProductResponseDto {
-
+    private Long id;
     private String name;
     private String description;
     private BigDecimal price;
@@ -12,8 +12,8 @@ public class ProductResponseDto {
     public ProductResponseDto() {}
 
     // Construtor completo
-    public ProductResponseDto( String name, String description, BigDecimal price) {
-
+    public ProductResponseDto(Long id, String name, String description, BigDecimal price) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
@@ -21,7 +21,8 @@ public class ProductResponseDto {
 
     // Getters e setters
 
-
+    public  Long getId() {return id;}
+    public void setId(Long id) {this.id = id;}
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 

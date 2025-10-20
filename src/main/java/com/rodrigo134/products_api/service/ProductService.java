@@ -34,8 +34,8 @@ public class ProductService {
         productRepository.save(productModel);
 
         //Converte Model -> Response DTO
-        R response = new ProductResponseDto();
-
+        ProductResponseDto response = new ProductResponseDto();
+        response.setId(productModel.getProductId());
         response.setName(productModel.getProductName());
         response.setDescription(productModel.getProductDescription());
         response.setPrice(productModel.getProductPrice());
@@ -47,7 +47,10 @@ public class ProductService {
     public List<ProductResponseDto> findAll() {
         List<ProductModel> products = productRepository.findAll();
         return products.stream()
+                //mapeamento de cada productModel para ProductResponseDto
+                //findAll retorna uma lista de ProductModel
                 .map(product -> new ProductResponseDto(
+                        product.getProductId(),
                         product.getProductName(),
                         product.getProductDescription(),
                         product.getProductPrice()
@@ -59,6 +62,7 @@ public class ProductService {
         ProductModel product = productRepository.findById(id)
                 .orElseThrow(() -> new ProductNotFoundException("Produto não existe"));
         return new ProductResponseDto(
+                product.getProductId(),
                 product.getProductName(),
                 product.getProductDescription(),
                 product.getProductPrice()
@@ -79,6 +83,7 @@ public class ProductService {
 
         //conversão dto -> model
         ProductResponseDto response = new ProductResponseDto();
+        response.setId(existingProduct.getProductId());
         response.setName(existingProduct.getProductName());
         response.setDescription(existingProduct.getProductDescription());
         response.setPrice(existingProduct.getProductPrice());
