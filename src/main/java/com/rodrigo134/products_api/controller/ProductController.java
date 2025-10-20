@@ -3,9 +3,10 @@ package com.rodrigo134.products_api.controller;
 
 import com.rodrigo134.products_api.dto.ProductResponseDto;
 import com.rodrigo134.products_api.dto.RequestDto;
+
 import com.rodrigo134.products_api.model.ProductModel;
-import com.rodrigo134.products_api.repository.ProductRepository;
 import com.rodrigo134.products_api.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,14 +24,14 @@ public class ProductController {
     }
 
     @PostMapping("/produtos")
-    public ResponseEntity<ProductResponseDto> createProduct(@RequestBody RequestDto requestDto) {
+    public ResponseEntity<ProductResponseDto> createProduct( @Valid @RequestBody RequestDto requestDto) {
         ProductResponseDto productDto = productService.createProduct(requestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(productDto);
     }
 
 
     @GetMapping("/produtos")
-    public ResponseEntity<List<ProductResponseDto>> getAllProducts() {
+    public ResponseEntity<List<ProductModel>> getAllProducts() {
         return ResponseEntity.status(HttpStatus.OK).body(productService.findAll());
     }
 
@@ -42,8 +43,7 @@ public class ProductController {
 
 
     @PutMapping("/produtos/{id}")
-    public ResponseEntity<ProductResponseDto> updateProduct(@PathVariable Long id, @RequestBody RequestDto requestDto) {
-        // Lógica para atualizar o produto
+    public ResponseEntity<ProductResponseDto> updateProduct( @PathVariable Long id, @RequestBody RequestDto requestDto) {
 
         return ResponseEntity.status(HttpStatus.OK).body(productService.updateProduct(id, requestDto));
     }

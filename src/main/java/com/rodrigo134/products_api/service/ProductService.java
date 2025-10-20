@@ -34,7 +34,7 @@ public class ProductService {
         productRepository.save(productModel);
 
         //Converte Model -> Response DTO
-        ProductResponseDto response = new ProductResponseDto();
+        R response = new ProductResponseDto();
 
         response.setName(productModel.getProductName());
         response.setDescription(productModel.getProductDescription());
