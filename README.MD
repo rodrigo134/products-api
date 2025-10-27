@@ -83,7 +83,7 @@ Para rodar os testes:mvn test
 ### Swagger UI
 A API inclui documentação interativa utilizando Swagger. Após iniciar a aplicação, você pode acessar a documentação em:
 ```
-http://localhost:8080/swagger-ui.html ou http://localhost:8080/swagger-ui/index.html
+http://localhost:8080/swagger-ui.html
 ```
 ---
 ### Licença
